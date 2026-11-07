@@ -80,11 +80,22 @@ ProjectSettings/
 3. In Unity Hub, select **Add project from disk** and choose the cloned folder.
 4. Open the project and allow Unity to import its assets.
 
-## 📱 Android Build
+## 📱 Download for Android
 
-The project is configured for Android portrait gameplay.
+**Rebound v1.0.0** is available as an installable Android APK.
 
-An installable APK will be published under [GitHub Releases](https://github.com/sanchitory19-stack/Rebound-Unity-Game/releases) when the public build is uploaded.
+<p align="center">
+  <a href="https://github.com/sanchitory19-stack/Rebound-Unity-Game/releases/download/v1.0.0/Rebound-v1.apk">
+    <strong>⬇️ Download Rebound v1.0.0 (APK)</strong>
+  </a>
+</p>
+
+- **Platform:** Android
+- **Format:** APK
+- **File size:** 36.8 MB
+- **Release notes and older versions:** [GitHub Releases](https://github.com/sanchitory19-stack/Rebound-Unity-Game/releases)
+
+To install, download the APK on your Android device and open it. Your device may ask you to allow installation from that source.
 
 ## 📸 Screenshots
 
