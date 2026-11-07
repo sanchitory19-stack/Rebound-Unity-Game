@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,16 @@ public class InputManager : MonoBehaviour
     private Vector2 aimDirection;
     private BallController currentBallController;
 
+    private enum InputSource
+    {
+        None,
+        Mouse,
+        Touch
+    }
+
+    private InputSource activeInput = InputSource.None;
+    private int activeTouchId = -1;
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -24,34 +35,87 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Touchscreen.current != null &&
+            Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
-            StartAim();
+            var touch = Touchscreen.current.primaryTouch;
+            activeTouchId = touch.touchId.ReadValue();
+            activeInput = InputSource.Touch;
+
+            StartAim(touch.position.ReadValue());
         }
 
-        if (isAiming && Mouse.current.leftButton.isPressed)
+        if (activeInput == InputSource.Touch && Touchscreen.current != null)
         {
-            UpdateAim();
+            var touch = Touchscreen.current.primaryTouch;
+
+            if (touch.touchId.ReadValue() == activeTouchId)
+            {
+                if (isAiming && touch.press.isPressed)
+                {
+                    UpdateAim(touch.position.ReadValue());
+                }
+
+                if (isAiming && touch.press.wasReleasedThisFrame)
+                {
+                    ShootBall();
+                    activeInput = InputSource.None;
+                    activeTouchId = -1;
+                }
+            }
         }
 
-        if (isAiming && Mouse.current.leftButton.wasReleasedThisFrame)
+        if (activeInput == InputSource.None &&
+            Mouse.current != null &&
+            Mouse.current.leftButton.wasPressedThisFrame)
         {
-            ShootBall();
+            activeInput = InputSource.Mouse;
+            StartAim(Mouse.current.position.ReadValue());
+        }
+
+        if (activeInput == InputSource.Mouse && Mouse.current != null)
+        {
+            if (isAiming && Mouse.current.leftButton.isPressed)
+            {
+                UpdateAim(Mouse.current.position.ReadValue());
+            }
+
+            if (isAiming && Mouse.current.leftButton.wasReleasedThisFrame)
+            {
+                ShootBall();
+                activeInput = InputSource.None;
+            }
         }
     }
 
-    private void StartAim()
+    private void StartAim(Vector2 screenPosition)
     {
         Debug.Log("Start Aim");
 
         if (currentBallController != null && currentBallController.IsLaunched)
         {
+            Destroy(currentBall);
+
+            currentBall = null;
+            currentBallController = null;
+
+            isAiming = false;
+            hasAimDirection = false;
+            aimDirection = Vector2.zero;
+
+            aimDots.Hide();
+
+            GameManager.Instance.ResetLevel();
+
+            activeInput = InputSource.None;
+            activeTouchId = -1;
+
             return;
         }
 
         ResetCurrentShot();
 
-        Vector3 worldPos = GetPointerWorldPosition();
+        Vector3 worldPos = GetPointerWorldPosition(screenPosition);
 
         Collider2D hit = Physics2D.OverlapCircle(
             worldPos,
@@ -86,16 +150,14 @@ public class InputManager : MonoBehaviour
         GameManager.Instance.ResetLevel();
     }
 
-    private void UpdateAim()
+    private void UpdateAim(Vector2 screenPosition)
     {
-        Debug.Log("Dragging");
-
         if (currentBall == null)
             return;
 
-        Vector3 mousePos = GetPointerWorldPosition();
+        Vector3 pointerPos = GetPointerWorldPosition(screenPosition);
         Vector3 start = currentBall.transform.position;
-        Vector3 direction = start - mousePos;
+        Vector3 direction = start - pointerPos;
 
         if (direction.sqrMagnitude < minAimDistance * minAimDistance)
         {
@@ -139,9 +201,11 @@ public class InputManager : MonoBehaviour
         aimDots.Hide();
     }
 
-    private Vector3 GetPointerWorldPosition()
+    private Vector3 GetPointerWorldPosition(Vector2 screenPosition)
     {
-        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(
+            new Vector3(screenPosition.x, screenPosition.y, mainCamera.nearClipPlane));
+
         worldPosition.z = 0;
         return worldPosition;
     }
@@ -155,6 +219,8 @@ public class InputManager : MonoBehaviour
         isAiming = false;
         hasAimDirection = false;
         aimDirection = Vector2.zero;
+        activeInput = InputSource.None;
+        activeTouchId = -1;
 
         aimDots.Hide();
     }

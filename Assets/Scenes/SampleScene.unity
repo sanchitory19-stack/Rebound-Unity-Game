@@ -713,7 +713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.168}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.899994, y: 1096.7}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 50.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &519420028
@@ -1181,8 +1181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelIntro
   levelText: {fileID: 517207244}
   textTransform: {fileID: 517207246}
-  centerY: 0
-  endY: 900
   slideSpeed: 1200
   pauseTime: 0.5
 --- !u!1 &1138960142
@@ -1416,7 +1414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   levelPrefabs:
-  - {fileID: 5484134590723059378, guid: 879e84ca7d3a41d4b918233cd4d37b02, type: 3}
+  - {fileID: 5484134590723059378, guid: 86f894af8042f34458e6735dfd8c3047, type: 3}
   - {fileID: 5484134590723059378, guid: 9a63161c3a421ef4691592e9996fa9d7, type: 3}
   - {fileID: 5484134590723059378, guid: 7eba76258f0b6a9448cf5fc6ce677243, type: 3}
   - {fileID: 5484134590723059378, guid: 2dc3be97e4f67a1489f125d9b8e0d358, type: 3}
@@ -1778,12 +1776,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
