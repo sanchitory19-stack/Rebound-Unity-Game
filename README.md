@@ -1,49 +1,97 @@
 # REBOUND
 
-**A 2D physics-based arcade puzzle game built with Unity and C#.**
+<p align="center">
+  <strong>A physics-based arcade puzzle game made with Unity and C#.</strong>
+  <br />
+  Aim carefully, bounce around obstacles, and hit every target to clear each level.
+</p>
 
-Rebound is a mobile puzzle game where precision, timing, and physics come together. Aim your shots, bounce off obstacles, destroy every target, and progress through increasingly challenging levels.
-
-## 🎮 Gameplay
-
-- Drag anywhere on the screen to spawn and aim the ball.
-- Release to launch it.
-- Use physics-based bouncing to hit targets.
-- Clear every target to complete the level.
-- Tap while the ball is moving to restart the current level.
-
-## ✨ Features
-
-- Physics-based ball movement and collisions.
-- Multiple handcrafted levels.
-- Destructible targets and obstacles.
-- Smooth level transitions and animations.
-- Sound effects and gameplay audio.
-- Android touchscreen controls.
-- Portrait mobile gameplay.
-
-## 🛠️ Built With
-
-- **Engine:** Unity
-- **Language:** C#
-- **Physics:** Unity 2D Physics
-- **Platform:** Android
-
-## 📱 Download
-
-**[Download the latest Android version](https://github.com/sanchitory19-stack/Rebound-Unity-Game/releases/latest)**
-
-## 📸 Screenshots
-
-*Gameplay screenshots and a gameplay GIF coming soon.*
-
-## 🚀 Running the Project
-
-1. Clone this repository.
-2. Open the project using Unity Hub.
-3. Allow Unity to import the project files.
-4. Open and run the game in the Unity Editor.
+<p align="center">
+  <img src="https://img.shields.io/badge/Engine-Unity%206-black?logo=unity" alt="Unity 6" />
+  <img src="https://img.shields.io/badge/Language-C%23-239120?logo=csharp&logoColor=white" alt="C Sharp" />
+  <img src="https://img.shields.io/badge/Platform-Android-3DDC84?logo=android&logoColor=white" alt="Android" />
+  <img src="https://img.shields.io/badge/Orientation-Portrait-blue" alt="Portrait orientation" />
+</p>
 
 ---
 
-**Developed independently as a personal game development project.**
+## 🎮 About the Game
+
+**Rebound** is a 2D mobile arcade puzzle game built around precision aiming and physics-based ball movement. Launch a ball, use walls and obstacles to your advantage, and destroy every target to move on to the next challenge.
+
+## 🕹️ How to Play
+
+1. Touch and drag anywhere on the screen to spawn and aim the ball.
+2. Pull back to set your shot.
+3. Release to launch.
+4. Use rebounds and obstacle interactions to hit every target.
+5. Clear all targets to complete the level.
+6. If the ball is still moving, tap the screen to restart the current level.
+
+## ✨ Features
+
+- **16 level prefabs** with handcrafted layouts.
+- Physics-based movement, collisions, and rebounds.
+- Moving and rotating obstacles.
+- Multiple target and obstacle shapes.
+- Aim indicators to help line up shots.
+- Target-hit effects and level transition animations.
+- Main menu, pause, and win UI.
+- Sound effects and gameplay audio.
+- Touchscreen controls for Android.
+- Portrait-oriented mobile gameplay.
+
+## 🛠️ Built With
+
+| Technology | Use |
+|---|---|
+| Unity 6.0.4f1 | Game engine |
+| C# | Gameplay and game systems |
+| Unity 2D Physics | Ball movement and collisions |
+| Android | Target platform |
+
+## 📁 Project Structure
+
+```text
+Assets/
+├── Prefabs/
+│   ├── Levels/
+│   ├── Targets/
+│   └── Effects/
+├── Scenes/
+└── Scripts/
+    ├── Effects/
+    ├── Gameplay/
+    ├── Managers/
+    ├── Obstacles/
+    ├── Player/
+    └── UI/
+Packages/
+ProjectSettings/
+```
+
+## 🚀 Open the Project
+
+1. Install **Unity 6.0.4f1** using Unity Hub.
+2. Clone this repository:
+   ```bash
+   git clone https://github.com/sanchitory19-stack/Rebound-Unity-Game.git
+   ```
+3. In Unity Hub, select **Add project from disk** and choose the cloned folder.
+4. Open the project and allow Unity to import its assets.
+
+## 📱 Android Build
+
+The project is configured for Android portrait gameplay.
+
+An installable APK will be published under [GitHub Releases](https://github.com/sanchitory19-stack/Rebound-Unity-Game/releases) when the public build is uploaded.
+
+## 📸 Screenshots
+
+Gameplay screenshots and a short gameplay clip will be added here.
+
+---
+
+<p align="center">
+  Made independently with Unity.
+</p>
