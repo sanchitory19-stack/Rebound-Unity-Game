@@ -88,7 +88,11 @@ An installable APK will be published under [GitHub Releases](https://github.com/
 
 ## 📸 Screenshots
 
-Gameplay screenshots and a short gameplay clip will be added here.
+<p align="center">
+  <img src="./892947162_29071218092531371_7182447810912800824_n.jpg" alt="Rebound gameplay screenshot 1" width="30%" />
+  <img src="./893020476_1899446967706104_5007525133042532949_n.jpg" alt="Rebound gameplay screenshot 2" width="30%" />
+  <img src="./897871309_1030824490063126_892765064105832886_n.jpg" alt="Rebound gameplay screenshot 3" width="30%" />
+</p>
 
 ---
 
